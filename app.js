@@ -1,18 +1,14 @@
 const searchInput = document.getElementById("search-input");
-searchInputValue = searchInput.value;
 const formSearch = document.getElementById("form-search");
 const searchQuery = document.getElementById("query");
 const phoneticQuery = document.getElementById("phonetic");
 const phoneticSound = document.getElementById("phonetic-sound");
+const baseUrl = "https://api.dictionaryapi.dev/api/v2/entries/en/";
 
 formSearch.addEventListener("submit", (event) => {
   event.preventDefault();
-  const searchInput = document.getElementById("search-input");
-  searchInputValue = searchInput.value;
-  searchInputValueString = searchInputValue.toString();
-  searchQuery.innerText = capitalizeFirstLetter(searchInputValue);
-
-  const baseUrl = "https://api.dictionaryapi.dev/api/v2/entries/en/";
+  searchInputValueString = searchInput.value.toString();
+  searchQuery.innerText = capitalizeFirstLetter(searchInput.value);
   const completeUrl = baseUrl + searchInputValueString;
 
   fetch(completeUrl)
@@ -35,3 +31,17 @@ formSearch.addEventListener("submit", (event) => {
 function capitalizeFirstLetter(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
+
+// phoneticSound.addEventListener("click", (event) => {
+//   const searchInputValueString = searchInput.value.toString();
+//   const completeUrl = baseUrl + searchInputValueString;
+//   // fetch("https://api.dictionaryapi.dev/api/v2/entries/en/dog")
+//   //   .then((response) => response.json())
+//   //   .then((data) => {
+//   // const audioElement = data[0].phonetics[2].audio;
+//   const audioUrl =
+//     "https://api.dictionaryapi.dev/media/pronunciations/en/dog-us.mp3";
+//   phoneticSound.src = audioUrl;
+//   phoneticSound.play();
+//   // });
+// });
