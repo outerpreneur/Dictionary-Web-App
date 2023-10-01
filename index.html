@@ -11,6 +11,17 @@
       href="./assets/images/favicon-32x32.png"
     />
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              accent: "#A445ED",
+            },
+          },
+        },
+      };
+    </script>
 
     <title>Frontend Mentor | Dictionary web app</title>
   </head>
@@ -38,10 +49,11 @@
       <form id="form-search" class="second-row relative mt-4">
         <input
           id="search-input"
-          class="w-full rounded-2xl bg-gray-200 p-2"
-          placeholder="Keyboard"
+          class="w-full rounded-2xl bg-gray-200 p-2 cursor-pointer"
+          placeholder="Search for any keyword"
         />
         <svg
+          id="search-icon"
           xmlns="http://www.w3.org/2000/svg"
           width="18"
           height="18"
@@ -64,13 +76,13 @@
         <div class="result">
           <div class="flex justify-between">
             <div class="flex flex-col justify-between">
-              <h1 id="query" class="text-3xl self-center">Keyboard</h1>
-              <h2 id="phonetic" class="text-pink-400">Keyfrwed</h2>
+              <h1 id="query" class="text-3xl">Keyword</h1>
+              <h2 id="phonetic" class="text-accent">/ˈkiːbɔːd/</h2>
             </div>
             <img
               class="w-14 cursor-pointer"
               id="phonetic-sound"
-              src="./assets/images/icon-play.svg"
+              src="/assets/images/icon-play.svg"
               alt=""
             />
           </div>
@@ -80,13 +92,18 @@
             <span class="grow-0 inline-block font-bold">Noun</span>
             <hr class="grow inline-block w-2" />
           </div>
+          <p class="text-gray-400">meaning</p>
           <ul id="definitions-list" class="list-disc"></ul>
-          <div class="meaning"></div>
+          <div class="flex gap-3">
+            <p>Synonyms</p>
+            <p id="synonyms" class="text-accent">Code word</p>
+          </div>
         </div>
         <div id="verb" class="verb">
           <span class="font-bold">Verb</span>
           <hr />
-          <div class="meaning"></div>
+          <p class="text-gray-400">meaning</p>
+          <ul class="list-disc" id="verbs-list"></ul>
         </div>
       </div>
     </main>
