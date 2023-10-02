@@ -17,6 +17,7 @@
           extend: {
             colors: {
               accent: "#A445ED",
+              inputgray: "#3A3A3A",
             },
           },
         },
@@ -25,8 +26,8 @@
 
     <title>Frontend Mentor | Dictionary web app</title>
   </head>
-  <body class="">
-    <header class="max-w-xs mx-auto p-3">
+  <body class="bg-white dark:bg-[#050505]">
+    <header class="max-w-xs sm:max-w-xl md:max-w-2xl lg:max-w-3xl mx-auto p-3">
       <div class="first-row flex justify-between">
         <img src="./assets/images/logo.svg" />
         <select>
@@ -49,7 +50,7 @@
       <form id="form-search" class="second-row relative mt-4">
         <input
           id="search-input"
-          class="w-full rounded-2xl bg-gray-200 p-2 cursor-pointer"
+          class="w-full rounded-2xl bg-gray-200 p-2 cursor-pointer dark:bg-[#3A3A3A] dark:text-white"
           placeholder="Search for any keyword"
         />
         <svg
@@ -71,12 +72,14 @@
         </svg>
       </form>
     </header>
-    <main class="max-w-xs p-3 mt-5 mx-auto">
+    <main
+      class="max-w-xs sm:max-w-xl md:max-w-2xl lg:max-w-3xl p-3 mt-5 mx-auto"
+    >
       <div class="container-api flex flex-col gap-4">
         <div class="result">
           <div class="flex justify-between">
             <div class="flex flex-col justify-between">
-              <h1 id="query" class="text-3xl">Keyword</h1>
+              <h1 id="query" class="text-3xl dark:text-white">Keyword</h1>
               <h2 id="phonetic" class="text-accent">/ˈkiːbɔːd/</h2>
             </div>
             <img
@@ -87,30 +90,33 @@
             />
           </div>
         </div>
-        <div id="noun" class="noun">
+        <div id="noun" class="noun dark:text-white">
           <div class="flex">
             <span class="grow-0 inline-block font-bold">Noun</span>
             <hr class="grow inline-block w-2" />
           </div>
           <p class="text-gray-400">meaning</p>
-          <ul id="definitions-list" class="list-disc"></ul>
+          <ul id="definitions-list" class="list-disc p-5"></ul>
           <div class="flex gap-3">
             <p>Synonyms</p>
             <p id="synonyms" class="text-accent">Code word</p>
           </div>
         </div>
-        <div id="verb" class="verb">
+        <div id="verb" class="verb dark:text-white">
           <span class="font-bold">Verb</span>
           <hr />
           <p class="text-gray-400">meaning</p>
-          <ul class="list-disc" id="verbs-list"></ul>
+          <ul class="list-disc p-5" id="verbs-list"></ul>
         </div>
       </div>
     </main>
-    <footer class="max-w-xs p-3 mx-auto">
+    <footer
+      class="dark:text-white max-w-xs sm:max-w-xl md:max-w-2xl lg:max-w-3xl p-3 mx-auto"
+    >
       <h5 class="underline">Source</h5>
       <p>https://en.wiktionary.org/wiki/keyboard</p>
     </footer>
     <script src="./app.js"></script>
+    <!-- <script src="./theme.js"></script> -->
   </body>
 </html>
