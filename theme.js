@@ -17,3 +17,12 @@ localStorage.theme = "dark";
 
 // Whenever the user explicitly chooses to respect the OS preference
 localStorage.removeItem("theme");
+
+const toggleButton = document.getElementById("toggle-btn");
+
+toggleButton.addEventListener("change", (event) => {
+  document.documentElement.classList.add("dark");
+  console.log(localStorage.theme);
+});
+
+console.log(localStorage.theme);

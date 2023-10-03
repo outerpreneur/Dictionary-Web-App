@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -25,6 +25,7 @@
               accent: "#A445ED",
               inputgray: "#3A3A3A",
             },
+            darkMode: "class",
           },
         },
       };
@@ -32,7 +33,7 @@
 
     <title>Frontend Mentor | Dictionary web app</title>
   </head>
-  <body class="bg-white dark:bg-[#050505]">
+  <body class="bg-white dark:bg-black h-full">
     <header class="max-w-xs sm:max-w-xl md:max-w-2xl lg:max-w-3xl mx-auto p-3">
       <div class="first-row flex justify-between">
         <img src="./assets/images/logo.svg" />
@@ -42,14 +43,18 @@
           <option value="Mono"></option>
         </select>
         <div class="flex items-center gap-3">
-          <input type="checkbox" class="toggle dark:bg-accent" checked />
+          <input
+            type="checkbox"
+            id="toggle-btn"
+            class="toggle dark:bg-accent"
+          />
           <img src="./assets/images/icon-moon.svg" alt="" />
         </div>
       </div>
       <form id="form-search" class="second-row relative mt-4">
         <input
           id="search-input"
-          class="w-full rounded-2xl bg-gray-200 p-2 cursor-pointer dark:bg-[#3A3A3A] dark:text-white"
+          class="w-full rounded-2xl bg-gray-200 p-2 cursor-pointer dark:bg-inputgray dark:text-white"
           placeholder="Search for any keyword"
         />
         <svg
@@ -115,7 +120,7 @@
       <h5 class="underline">Source</h5>
       <p>https://en.wiktionary.org/wiki/keyboard</p>
     </footer>
-    <script src="./app.js"></script>
+    <script src="./api.js"></script>
     <!-- <script src="./theme.js"></script> -->
   </body>
 </html>
