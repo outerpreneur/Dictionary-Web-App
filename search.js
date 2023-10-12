@@ -20,6 +20,10 @@ formSearch.addEventListener("submit", (event) => {
   fetchVerbs();
 });
 
+searchInput.addEventListener("click", (event) => {
+  document.querySelector("form").reset();
+});
+
 searchIcon.addEventListener("click", (event) => {
   event.preventDefault();
   clearPreviousResults();
@@ -27,7 +31,25 @@ searchIcon.addEventListener("click", (event) => {
 });
 
 phoneticSound.addEventListener("click", (event) => {
+  const searchInputValue = searchInput.value;
   playSound();
+});
+
+formSearch.addEventListener("keyup", (event) => {
+  if (searchInput.value.length === 0) {
+    const errorMessage = document.createElement("p");
+    errorMessage.id = "error-message";
+    errorMessage.innerText = "Whoops, can’t be empty…";
+    formSearch.appendChild(errorMessage);
+    errorMessage.classList.add("text-redError", "mt-2");
+    searchInput.classList.remove("focus:outline-accent");
+    searchInput.classList.add("focus:outline-redError");
+  } else {
+    searchInput.classList.add("focus:outline-accent");
+    searchInput.classList.remove("focus:outline-redError");
+    const errorMessage = document.getElementById("error-message");
+    errorMessage.remove();
+  }
 });
 
 // functions
@@ -53,7 +75,6 @@ function fetchNoun() {
         definitionParagraph.classList.add("my-3");
       }
       synonyms.innerHTML = data[0].meanings[0].synonyms;
-      document.querySelector("form").reset();
     });
 }
 
@@ -92,11 +113,12 @@ function clearPreviousResults() {
 
 function playSound() {
   const searchInputValueString = searchInput.value.toString();
-  console.log(searchInputValueString);
-  alert("pachuca");
+
   const completeUrl = baseUrl + searchInputValueString;
-  // console.log(completeUrl);
+  console.log(completeUrl);
   fetch(completeUrl)
     .then((response) => response.json())
-    .then((data) => {});
+    .then((data) => {
+      console.log(data[0].phonetics[0].audio);
+    });
 }

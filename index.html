@@ -26,6 +26,7 @@
               accent: "#A445ED",
               inputgray: "#3A3A3A",
               lightgray: "#E9E9E9",
+              redError: "#FF5252",
             },
             fontFamily: {
               sans: ["sans-serif"],
@@ -86,7 +87,7 @@
         <form id="form-search" class="second-row relative mt-4">
           <input
             id="search-input"
-            class="w-full rounded-2xl bg-gray-200 px-2 py-4 p cursor-pointer dark:bg-inputgray"
+            class="w-full rounded-2xl bg-gray-200 px-2 py-4 p cursor-pointer dark:bg-inputgray focus:outline-accent"
             placeholder="Search for any keyword"
           />
           <svg
@@ -168,7 +169,7 @@
         <h5 class="underline">Source</h5>
         <p>https://en.wiktionary.org/wiki/keyboard</p>
       </footer>
-      <script src="./api.js"></script>
+      <script src="./search.js"></script>
       <script src="./font-selector.js"></script>
       <script src="./theme.js"></script>
     </div>
