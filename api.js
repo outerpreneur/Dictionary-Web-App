@@ -8,7 +8,7 @@ const phoneticQuery = document.getElementById("phonetic");
 const phoneticSound = document.getElementById("phonetic-sound");
 const baseUrl = "https://api.dictionaryapi.dev/api/v2/entries/en/";
 const synonyms = document.getElementById("synonyms");
-const definitionsList = document.getElementById("noun-list");
+const nounList = document.getElementById("noun-list");
 
 // triggers
 
@@ -16,14 +16,18 @@ formSearch.addEventListener("submit", (event) => {
   event.preventDefault();
   clearPreviousResults();
   searchQuery.innerText = capitalizeFirstLetter(searchInput.value);
-  fetchDefinitions();
+  fetchNoun();
   fetchVerbs();
 });
 
 searchIcon.addEventListener("click", (event) => {
   event.preventDefault();
   clearPreviousResults();
-  fetchDefinitions();
+  fetchNoun();
+});
+
+phoneticSound.addEventListener("click", (event) => {
+  playSound();
 });
 
 // functions
@@ -32,7 +36,7 @@ function capitalizeFirstLetter(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-function fetchDefinitions(definition) {
+function fetchNoun() {
   const searchInputValueString = searchInput.value.toString();
   const completeUrl = baseUrl + searchInputValueString;
   fetch(completeUrl)
@@ -53,7 +57,7 @@ function fetchDefinitions(definition) {
     });
 }
 
-function fetchVerbs(verbs) {
+function fetchVerbs() {
   const searchInputValueString = searchInput.value.toString();
   const completeUrl = baseUrl + searchInputValueString;
   fetch(completeUrl)
@@ -84,4 +88,15 @@ function clearPreviousResults() {
   while (verbsList.firstChild) {
     verbsList.removeChild(verbsList.firstChild);
   }
+}
+
+function playSound() {
+  const searchInputValueString = searchInput.value.toString();
+  console.log(searchInputValueString);
+  alert("pachuca");
+  const completeUrl = baseUrl + searchInputValueString;
+  // console.log(completeUrl);
+  fetch(completeUrl)
+    .then((response) => response.json())
+    .then((data) => {});
 }
