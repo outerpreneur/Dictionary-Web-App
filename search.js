@@ -9,6 +9,7 @@ const phoneticSound = document.getElementById("phonetic-sound");
 const baseUrl = "https://api.dictionaryapi.dev/api/v2/entries/en/";
 const synonyms = document.getElementById("synonyms");
 const nounList = document.getElementById("noun-list");
+const audioPlayer = document.getElementById("audio-player");
 
 // triggers
 
@@ -113,12 +114,14 @@ function clearPreviousResults() {
 
 function playSound() {
   const searchInputValueString = searchInput.value.toString();
-
   const completeUrl = baseUrl + searchInputValueString;
-  console.log(completeUrl);
+
   fetch(completeUrl)
     .then((response) => response.json())
     .then((data) => {
       console.log(data[0].phonetics[0].audio);
+      const audioApi = data[0].phonetics[0].audio;
+      const audioPlayer = new Audio(audioApi); // Create a new Audio element
+      audioPlayer.play(); // Play the audio
     });
 }
