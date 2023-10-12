@@ -8,11 +8,13 @@ const phoneticQuery = document.getElementById("phonetic");
 const phoneticSound = document.getElementById("phonetic-sound");
 const baseUrl = "https://api.dictionaryapi.dev/api/v2/entries/en/";
 const synonyms = document.getElementById("synonyms");
+const definitionsList = document.getElementById("noun-list");
 
 // triggers
 
 formSearch.addEventListener("submit", (event) => {
   event.preventDefault();
+  clearPreviousResults();
   searchQuery.innerText = capitalizeFirstLetter(searchInput.value);
   fetchDefinitions();
   fetchVerbs();
@@ -20,6 +22,7 @@ formSearch.addEventListener("submit", (event) => {
 
 searchIcon.addEventListener("click", (event) => {
   event.preventDefault();
+  clearPreviousResults();
   fetchDefinitions();
 });
 
@@ -37,12 +40,12 @@ function fetchDefinitions(definition) {
     .then((data) => {
       phoneticQuery.innerText = data[0].phonetic;
       const wordArr = data[0].meanings;
-      const nounElement = document.getElementById("definitions-list");
+      const nounList = document.getElementById("noun-list");
       for (arr of wordArr) {
         // console.log(arr.definitions[0].definition);
         const definitionParagraph = document.createElement("li");
         definitionParagraph.textContent = arr.definitions[0].definition;
-        nounElement.appendChild(definitionParagraph);
+        nounList.appendChild(definitionParagraph);
         definitionParagraph.classList.add("my-3");
       }
       synonyms.innerHTML = data[0].meanings[0].synonyms;
@@ -65,4 +68,20 @@ function fetchVerbs(verbs) {
         verbParagraph.classList.add("my-3");
       }
     });
+}
+
+function clearPreviousResults() {
+  // Clear previous search results
+  phoneticQuery.innerText = "";
+  synonyms.innerText = "";
+
+  const nounList = document.getElementById("noun-list");
+  while (nounList.firstChild) {
+    nounList.removeChild(nounList.firstChild);
+  }
+
+  const verbsList = document.getElementById("verbs-list");
+  while (verbsList.firstChild) {
+    verbsList.removeChild(verbsList.firstChild);
+  }
 }
