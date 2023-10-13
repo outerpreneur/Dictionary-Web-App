@@ -41,9 +41,9 @@
     <title>Frontend Mentor | Dictionary web app</title>
   </head>
   <body id="bodytag" class="font-sans">
-    <div class="h-screen bg-white text-black dark:bg-black dark:text-white">
+    <div class="h-screen bg-white text-black dark:bg-black dark:text-white p-2">
       <header
-        class="bg-white max-w-xs sm:max-w-xl md:max-w-2xl lg:max-w-3xl mx-auto p-3 dark:bg-black"
+        class="bg-white max-w-sm sm:max-w-xl md:max-w-2xl lg:max-w-3xl mx-auto p-3 dark:bg-black"
       >
         <div class="first-row flex justify-between py-6">
           <img src="./assets/images/logo.svg" />
@@ -110,7 +110,7 @@
         </form>
       </header>
       <main
-        class="bg-white max-w-xs sm:max-w-xl md:max-w-2xl lg:max-w-3xl p-3 mt-5 mx-auto dark:bg-black"
+        class="bg-white max-w-md sm:max-w-xl md:max-w-2xl lg:max-w-3xl p-3 mt-5 mx-auto dark:bg-black"
       >
         <!-- FINDS -->
         <div class="container-api flex flex-col gap-4">
@@ -148,7 +148,9 @@
             </ul>
             <div class="flex gap-3">
               <p>Synonyms</p>
-              <p id="synonyms" class="text-accent">Electronic Keyboard</p>
+              <p id="synonyms" class="text-accent max-w-xl">
+                Electronic Keyboard
+              </p>
             </div>
           </div>
           <!-- VERBS -->
@@ -167,7 +169,7 @@
         </div>
       </main>
       <footer
-        class="max-w-xs sm:max-w-xl md:max-w-2xl lg:max-w-3xl p-3 mx-auto"
+        class="max-w-sm sm:max-w-xl md:max-w-2xl lg:max-w-3xl p-3 mx-auto"
       >
         <h5 class="underline">Source</h5>
         <p>https://en.wiktionary.org/wiki/keyboard</p>
